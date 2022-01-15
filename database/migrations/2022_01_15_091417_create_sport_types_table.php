@@ -17,6 +17,7 @@ class CreateSportTypesTable extends Migration
             $table->id();
             $table->string('name', 90);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -24,11 +24,16 @@ class SportTypeController extends Controller
 
     public function store(SportTypeRequest $request)
     {
+        $limit = SportType::whereDate('created_at', now())->count();
+        if($limit >= 10){
+            return response()->json(['message' => 'You can only create 10 sport types per day'], 400);
+        }
         $SportType = SportType::create(['name' => $request->name]);
         return response()->json([
             'success' => true,
             'data' => $SportType
         ], 201);
+        
     }
 
     public function show(SportType $SportType)
