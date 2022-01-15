@@ -7,6 +7,7 @@ use App\Http\Resources\SportTypeResource;
 use App\Models\SportType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class SportTypeController extends Controller
 {
@@ -33,7 +34,6 @@ class SportTypeController extends Controller
             'success' => true,
             'data' => $SportType
         ], 201);
-        
     }
 
     public function show(SportType $SportType)

@@ -27,6 +27,7 @@ class UserRequest extends FormRequest
             'name' => 'required|string|min:5',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
+            'role' => 'in:athlet,coach,admin'
         ];
     }
 }
