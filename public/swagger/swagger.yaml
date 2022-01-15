@@ -1,0 +1,122 @@
+swagger: '2.0'
+info:
+  description: LPT APis
+  version: 1.0.0
+  title: Coach Hiring API's
+basePath: /api/
+tags:
+  - name: Register
+    description: Register User
+
+paths:
+  /register:
+    post:
+      tags:
+        - Register
+      summary: Register User
+      description: 'Register User'
+      operationId: register
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          type: string
+          required: true
+        - in: query
+          name: email
+          type: string
+          required: true
+        - in: query
+          name: password
+          type: string
+          required: true
+        - in: query
+          name: type
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: successful operation
+        '422':
+          description: Bad request
+  /login:
+    post:
+      tags:
+        - Login
+      summary: Login User
+      description: 'Login User'
+      operationId: login
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: email
+          type: string
+          required: true
+        - in: query
+          name: password
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '422':
+          description: Bad request
+  /sport-types:
+    post:
+      tags:
+        - Sport Types
+      summary: Create Sport Type
+      description: 'Create Sport Type'
+      operationId: sport-types
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: successful operation
+        '422':
+          description: Bad request
+        '403':
+          description: Bad request
+  /packages:
+    post:
+      tags:
+        - Packages
+      summary: Create Package 
+      description: 'Create Package'
+      operationId: packages
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: name
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: successful operation
+        '422':
+          description: Bad request
+        '403':
+          description: Bad request
+
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Authorization
+    in: header
