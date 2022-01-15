@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PackageBookingController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PassportAuthController;
 use App\Http\Controllers\SportTypeController;
@@ -24,4 +25,5 @@ Route::post('login', [PassportAuthController::class, 'login']);
 Route::group(['middleware' =>[ 'auth:api']], function () {
     Route::resource('sport-types', SportTypeController::class);
     Route::resource('packages', PackageController::class);
+    Route::resource('bookings', PackageBookingController::class);
 });

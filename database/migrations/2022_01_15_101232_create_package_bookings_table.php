@@ -17,7 +17,6 @@ class CreatePackageBookingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('package_id');
             $table->unsignedBigInteger('user_id');
-            $table->double('package_price', 5, 2);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
