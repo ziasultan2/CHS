@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PackageBookingController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $bookings = PackageBooking::where('user_id', Auth::user()->id)->with('package')->get();
+        $bookings = PackageBooking::where('user_id', Auth::user()->id)->with('package')->orderBy('id', 'desc')->paginate(15);
         return response()->json($bookings);
     }
 
@@ -25,10 +25,5 @@ class PackageBookingController extends Controller
             'message' => 'Package booked successfully',
             'data' => $bookedPackage,
         ], 201);
-    }
-
-    public function show($id)
-    {
-        //
     }
 }

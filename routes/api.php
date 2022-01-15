@@ -4,8 +4,6 @@ use App\Http\Controllers\PackageBookingController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PassportAuthController;
 use App\Http\Controllers\SportTypeController;
-use App\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
