@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class UserRequest extends FormRequest
+class PackageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +25,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:5',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-            'role' => 'in:athlet,coach,admin'
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'publish_date' => 'required',
+            'session_time' => 'required',
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSportTypesTable extends Migration
+class CreatePackageBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateSportTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sport_types', function (Blueprint $table) {
+        Schema::create('package_bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 90);
+            $table->unsignedBigInteger('package_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('package_id')->references('id')->on('packages');
         });
     }
 
@@ -28,6 +31,6 @@ class CreateSportTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sport_types');
+        Schema::dropIfExists('package_bookings');
     }
 }

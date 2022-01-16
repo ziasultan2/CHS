@@ -18,6 +18,7 @@ class PassportAuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $user->attachRole($request->role);
         $access_token = $user->createToken('token')->accessToken;
         return response()->json([
             'success' => true,

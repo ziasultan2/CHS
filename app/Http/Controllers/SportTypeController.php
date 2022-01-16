@@ -7,6 +7,7 @@ use App\Http\Resources\SportTypeResource;
 use App\Models\SportType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class SportTypeController extends Controller
 {
@@ -24,6 +25,10 @@ class SportTypeController extends Controller
 
     public function store(SportTypeRequest $request)
     {
+        $limit = SportType::whereDate('created_at', now())->count();
+        if($limit >= 10){
+            return response()->json(['message' => 'You can only create 10 sport types per day'], 400);
+        }
         $SportType = SportType::create(['name' => $request->name]);
         return response()->json([
             'success' => true,
