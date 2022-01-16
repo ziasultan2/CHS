@@ -89,14 +89,41 @@ paths:
         '422':
           description: Bad request
         '403':
-          description: Bad request
-  /packages:
-    post:
+          description: Un Authorized
+      security:
+        - api_key: []
+    
+    get:
       tags:
-        - Packages
-      summary: Create Package 
-      description: 'Create Package'
-      operationId: packages
+        - Sport Types
+      summary: Get Sport Type
+      description: 'Get Sport Type'
+      operationId: sport-types
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: date
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '401':
+          description: Un Authenticated
+        '200':
+          description: Successful operation
+        '403':
+          description: Un Authroized
+      security:
+        - api_key: []
+    
+    put:
+      tags:
+        - Sport Types
+      summary: Update Sport Type
+      description: 'Update Sport Type'
+      operationId: sport-types
       consumes:
         - application/json
       parameters:
@@ -107,13 +134,113 @@ paths:
       produces:
         - application/json
       responses:
+        '401':
+          description: Un Authenticated
+        '200':
+          description: Updated Successfully
+        '403':
+          description: Un Authroized
+    security:
+        - api_key: []
+    
+    delete:
+      tags:
+        - Sport Types
+      summary: Delete Sport Type
+      description: 'Delete Sport Type'
+      operationId: sport-types
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '401':
+          description: Un Authenticated
+        '204':
+          description: Deleted Successfully
+        '403':
+          description: Un Authroized
+      security:
+        - api_key: []
+ 
+  /packages:
+    get:
+      tags:
+        - Packages
+      summary: Get Packages
+      description: 'Get Packages'
+      operationId: packages
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: date
+          type: string
+          required: false
+      produces:
+        - application/json
+      responses:
+        '401':
+          description: Un Authenticated
+        '200':
+          description: Successful operation
+        '403':
+          description: Un Authroized
+    post:
+      tags:
+        - Packages
+      summary: Create Package 
+      description: 'Create Package'
+      operationId: packages
+      consumes:
+        - application/json
+      parameters:
+        - in: query
+          name: title
+          type: string
+          required: true
+        - in: query
+          name: description
+          type: string
+          required: true
+        - in: query
+          name: price
+          type: string
+          required: true
+        - in: query
+          name: publish_date
+          type: string
+          required: true
+        - in: query
+          name: session_time
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
         '201':
           description: successful operation
         '422':
           description: Bad request
         '403':
-          description: Bad request
-
+          description: Uu AUthorised
+    delete:
+      tags:
+        - Packages
+      summary: Delete Package
+      description: 'Delete Sport Type'
+      operationId: packages
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '401':
+          description: Un Authenticated
+        '204':
+          description: Deleted Successfully
+        '403':
+          description: Un Authroized
 
 securityDefinitions:
   api_key:
